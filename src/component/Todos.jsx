@@ -6,7 +6,7 @@ import React from "react";
 const Todos = () => {
     const [editingId,setEditingId] = React.useState(null);;
     const[updatetxt,setUpdatetxt] = React.useState("");
-  
+  const [isCompleted, setIsCompleted] = React.useState(false);
     // in useSelector you get access to the state
     const todos = useSelector((state) => state.todos || []);
     // console.log(todos)
@@ -43,10 +43,10 @@ const startEdit = (todo) => {
                
              ) : (
                 
-                    <div className="flex-1 text-lg font-medium text-gray-800 items-center justify-center">
+                    <div className="flex-1 text-lg font-medium  text-gray-800 items-center flex justify-between">
        
                         {todo.text} 
-                        {/* <button onClick={() => setIsCompleted(!isCompleted)}>{isCompleted ? "Completed" : "Not Completed"}</button> */}
+                        <button onClick={() => setIsCompleted(!isCompleted)}>{isCompleted ? "Completed" : "Not Completed"}</button>
                         </div>
                    
              )}
