@@ -36,6 +36,7 @@
         const newTodo = {
           id: Date.now(),
           text: action.payload,
+          completed: false
           
 
         }
@@ -50,11 +51,15 @@
         state.todos = state.todos.map((todo) => todo.id === action.payload.id ? action.payload : todo)
         saveTodo(state.todos)
       },
+      toggleTodo: (state, action) => {
+        state.todos = state.todos.map((todo) => todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo)
+        saveTodo(state.todos)
+      },
   
     
     }
   })
 
-  export const { addTodo, removeTodo ,updateTodo} = todoSlice.actions
+  export const { addTodo, removeTodo ,updateTodo,toggleTodo} = todoSlice.actions
 
   export default todoSlice.reducer
